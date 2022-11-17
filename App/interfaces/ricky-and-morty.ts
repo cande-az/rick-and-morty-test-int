@@ -54,7 +54,11 @@ export interface Location extends ResourceBase {
 export interface Episode extends ResourceBase {
   air_date: string;
   episode: string;
-  character: string[];
+  characters: string[];
+  name: string;
+  id: number;
+  url: string;
+  created: string;
 }
 
 export interface ApiResponse<T> {

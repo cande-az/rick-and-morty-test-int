@@ -1,5 +1,5 @@
 import React from "react";
-import { Episode } from "rickmortyapi/dist/interfaces";
+import { Episode } from "../../interfaces/ricky-and-morty";
 
 const EpisodeCard = ({ currentEpisode }: { currentEpisode: Episode }) => {
   return (
