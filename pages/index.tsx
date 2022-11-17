@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
 import Head from "next/head";
 import { getCharacters, getEndpoints, getEpisode } from "rickmortyapi";
 import { Character } from "rickmortyapi/dist/interfaces";
@@ -20,8 +22,11 @@ export default function Index({
           <meta name="description" content="Lets do this test" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
+        <section className={styles.header}>
+          <img src="https://logos-world.net/wp-content/uploads/2022/01/Rick-And-Morty-Logo.png" />
+        </section>
         <main className={styles.main}>
-          <Home characters={characters} totalPages={totalPages}/>
+          <Home characters={characters} totalPages={totalPages} />
         </main>
 
         <footer className={styles.footer}></footer>

@@ -1,15 +1,40 @@
 .charactersListSection {
+  display: flex;
+  justify-content: space-between;
+  .charactersSection {
     display: flex;
-    justify-content: space-around;
-    width: 100%;
-    .charactersSection {
-      &Left,
-      &Right {
-        @extend .charactersSection;
-      }
+    &Left,
+    &Right {
+      @extend .charactersSection;
+    }
+    &Right{
+      flex-direction:row-reverse ;
     }
   }
-  .episodesContainerSection {
-    display: flex;
-    gap: 10rem;
+  .boxContainer {
+    background-color: #251642;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    height: 85vh;
+    padding-bottom: 0;
+    z-index: 1;
+    gap: 1.5rem;
   }
+  .cardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: fit-content;
+    padding: 1.3rem;
+    height: 75vh;
+    overflow-y: auto;
+  }
+}
+.episodesContainerSection {
+  display: flex;
+  gap: 10rem;
+}
+
+.sectionBoth{
+  min-width: max-content;
+}

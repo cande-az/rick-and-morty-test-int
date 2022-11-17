@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import styles from "./Home.module.scss";
 import { useCharacters } from "../../context/characters";
 import { Character } from "rickmortyapi/dist/interfaces";
-import RenderCurrentCharacter from "../RenderCurrentCharacter/RenderCurrentCharacter";
 import CharacterCard from "../CharacterCard/CharacterCard";
 import EpisodesCardsContainer from "../EpisodesCardsContainer/EpisodesCardsContainer";
 import Pagination from "../Pagination/Pagination";
@@ -18,10 +17,8 @@ const Home = ({
   const { leftCharacters, rightCharacters, common } = useCharacters();
 
   useEffect(() => {
-    leftCharacters.actions.updateCharacters(characters);
-    rightCharacters.actions.updateCharacters(characters);
-    leftCharacters.actions.setInitialPage();
-    rightCharacters.actions.setInitialPage();
+    leftCharacters.actions.init(characters);
+    rightCharacters.actions.init(characters);
   }, []);
 
   useEffect(() => {
@@ -45,51 +42,85 @@ const Home = ({
     <div>
       <section className={styles.charactersListSection}>
         <section className={styles.charactersSectionLeft}>
-          {leftCharacters?.characters?.map((character, idx) => (
-            <CharacterCard
-              key={idx}
-              character={character}
-              onSelect={leftCharacters.actions.onSelectCharacter}
-              side={leftCharacters.side}
-            />
-          ))}
-          {leftCharacters.currentPage && (
-            <Pagination
-              current={leftCharacters.currentPage}
-              totalPages={totalPages}
-              onClick={leftCharacters.actions.updatePage}
-            />
-          )}
-          <RenderCurrentCharacter character={leftCharacters.selected!} />
+          <div className={styles.boxContainer}>
+            <div className={styles.cardsContainer}>
+              {leftCharacters?.characters?.map((character, idx) => (
+                <CharacterCard
+                  key={idx}
+                  character={character}
+                  onSelect={leftCharacters.actions.onSelectCharacter}
+                  side={leftCharacters.side}
+                  className={`${
+                    leftCharacters?.selected?.id === character?.id
+                      ? "Selected"
+                      : ""
+                  }${
+                    rightCharacters?.selected?.id === character?.id
+                      ? "Disabled"
+                      : ""
+                  }`}
+                />
+              ))}
+            </div>
+            {leftCharacters.currentPage ? (
+              <Pagination
+                current={leftCharacters.currentPage}
+                totalPages={totalPages}
+                onClick={leftCharacters.actions.updatePage}
+              />
+            ) : null}
+          </div>
+          <EpisodesCardsContainer
+            episodes={leftCharacters.episodes}
+            className={leftCharacters.side}
+          />
+        </section>
+        <section className={styles.sectionBoth}>
+          <EpisodesCardsContainer
+            episodes={common.episodes}
+            className={"mix"}
+            compare={
+              leftCharacters?.episodes?.length &&
+              rightCharacters?.episodes?.length
+                ? true
+                : false
+            }
+          />
         </section>
         <section className={styles.charactersSectionRight}>
-          {rightCharacters?.characters?.map((character, idx) => (
-            <CharacterCard
-              key={idx}
-              character={character}
-              side={rightCharacters.side}
-              onSelect={rightCharacters.actions.onSelectCharacter}
+          <div className={styles.boxContainer}>
+            <div className={styles.cardsContainer}>
+              {rightCharacters?.characters?.map((character, idx) => (
+                <CharacterCard
+                  key={idx}
+                  character={character}
+                  side={rightCharacters.side}
+                  onSelect={rightCharacters.actions.onSelectCharacter}
+                  className={`${
+                    rightCharacters?.selected?.id === character?.id
+                      ? "Selected"
+                      : ""
+                  }${
+                    leftCharacters?.selected?.id === character?.id
+                      ? "Disabled"
+                      : ""
+                  }`}
+                />
+              ))}
+            </div>
+            <Pagination
+              current={rightCharacters.currentPage}
+              totalPages={totalPages}
+              onClick={rightCharacters.actions.updatePage}
             />
-          ))}
-          <Pagination
-            current={rightCharacters.currentPage}
-            totalPages={totalPages}
-            onClick={rightCharacters.actions.updatePage}
+          </div>
+          <EpisodesCardsContainer
+            episodes={rightCharacters.episodes}
+            className={rightCharacters.side}
           />
-          <RenderCurrentCharacter character={rightCharacters.selected!} />
         </section>
       </section>
-      <section className={styles.episodesContainerSection}>
-        <section>
-          <EpisodesCardsContainer episodes={leftCharacters.episodes} />
-        </section>
-        <section>
-          <EpisodesCardsContainer episodes={common.episodes} />
-        </section>
-        <section>
-          <EpisodesCardsContainer episodes={rightCharacters.episodes} />
-        </section>
-      </section>
+      <section className={styles.episodesContainerSection}></section>
     </div>
   );
 };

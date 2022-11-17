@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  position: relative;
+  background-color: lightgrey;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  padding: 0.7rem;
+  > * {
+    color: #1d1c1c;
+    cursor: pointer;
+  }
+  width: 14vw;
+  max-height: 7vh;
+  min-height: 7vh;
+  cursor: pointer;
+  &Selected {
+    @extend .container;
+    scale: 105%;
+    margin: 0.4vh 0;
+    background-color: #5da221;
+    transition: scale 0.2s ease-in;
+    > * {
+      color: white;
+    }
+    .background {
+      all: unset;
+    }
+  }
+  &Disabled {
+    @extend .container;
+    background-color: rgb(163, 163, 163);
+    > * {
+      cursor: not-allowed;
+    }
+    cursor: not-allowed;
+    > * {
+      color: grey;
+    }
+    .background {
+      all: unset;
+    }
+    .img {
+      filter: grayscale(1);
+    }
+  }
+}
+.info {  max-height: 7vh;
+    min-height: 7vh;
+  display: flex;
+  flex-direction: column;
+  h2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    margin-bottom: 0.6rem;
+  }
+}
+.content {
+  display: flex;
+  gap: 1rem;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.background {
+  position: absolute;
+  z-index: -1;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(500px);
+  width: 600%;
+  height: 600%;
+  overflow: hidden;
+}
+.img {
+  border-radius: 50%;
+}
+.dataContainer {
+  display: flex;
+  gap: 1.5rem;
+  overflow: hidden;
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  p{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-height: 1.1rem;
+  }
+}

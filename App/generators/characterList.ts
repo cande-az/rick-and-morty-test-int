@@ -17,10 +17,11 @@ class characterList {
     this._oposite = _oposite;
   }
 
-  setInitialPage = () => {
+  init = (characters: Character[]) => {
     this._setState({
       ...this._state!,
       currentPage: 1,
+      characters: characters,
     });
   };
 
@@ -32,10 +33,6 @@ class characterList {
       currentPage: newPage,
       characters: nextPage.data.results,
     });
-  };
-
-  updateCharacters = (characters: Character[]) => {
-    this._setState({ ...this._state!, characters: characters });
   };
 
   onSelectCharacter = (character: Character) => {
