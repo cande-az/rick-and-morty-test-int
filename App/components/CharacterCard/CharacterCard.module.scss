@@ -9,6 +9,9 @@
   overflow: hidden;
   border-radius: 1.5rem;
   padding: 0.7rem;
+  @media (max-width: 1040px){
+    width: 90%;
+  }
   > * {
     color: #1d1c1c;
     cursor: pointer;
@@ -17,6 +20,15 @@
   max-height: 7vh;
   min-height: 7vh;
   cursor: pointer;
+  &:hover {
+    background-color: #616161;
+    > * {
+      color: white;
+    }
+    .background {
+      all: unset;
+    }
+  }
   &Selected {
     @extend .container;
     scale: 105%;
@@ -28,6 +40,10 @@
     }
     .background {
       all: unset;
+      cursor: none;
+    }
+    &:hover {
+      background-color:  #5da221;
     }
   }
   &Disabled {
@@ -48,8 +64,9 @@
     }
   }
 }
-.info {  max-height: 7vh;
-    min-height: 7vh;
+.info {
+  max-height: 7vh;
+  min-height: 7vh;
   display: flex;
   flex-direction: column;
   h2 {
@@ -95,7 +112,7 @@
     font-weight: 600;
     font-size: 1.1rem;
   }
-  p{
+  p {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;

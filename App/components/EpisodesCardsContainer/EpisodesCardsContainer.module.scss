@@ -1,10 +1,71 @@
 .episodesContainer {
   background-color: #5da221;
-  padding: 1rem;
-  height: 85vh;
+  padding: 1.5rem 1rem 0 1rem;
+  height: 84vh;
   z-index: 0;
   border-radius: 0 0.5rem 0.5rem 0;
   padding-bottom: 0;
+  position: relative;
+  @media (max-width: 1040px) {
+    width: 50%;
+  }
+  @media (max-width: 450px) {
+    width: 100%;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1rem;
+    height: 4rem;
+    width: 18vw;
+    z-index: 50;
+    background: rgb(93, 162, 33);
+    background: -moz-linear-gradient(
+      0deg,
+      rgba(93, 162, 33, 1) 0%,
+      rgba(93, 162, 33, 0) 100%
+    );
+    background: -webkit-linear-gradient(
+      0deg,
+      rgba(93, 162, 33, 1) 0%,
+      rgba(93, 162, 33, 0) 100%
+    );
+    background: linear-gradient(
+      0deg,
+      rgba(93, 162, 33, 1) 0%,
+      rgba(93, 162, 33, 0) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5da221",endColorstr="#5da221",GradientType=1);
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0.5rem;
+    height: 4rem;
+    width: 18vw;
+    z-index: 50;
+    background: rgb(93, 162, 33);
+    background: -moz-linear-gradient(
+      180deg,
+      rgba(93, 162, 33, 1) 0%,
+      rgba(93, 162, 33, 0) 100%
+    );
+    background: -webkit-linear-gradient(
+      180deg,
+      rgba(93, 162, 33, 1) 0%,
+      rgba(93, 162, 33, 0) 100%
+    );
+    background: linear-gradient(
+      180deg,
+      rgba(93, 162, 33, 1) 0%,
+      rgba(93, 162, 33, 0) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5da221",endColorstr="#5da221",GradientType=1);
+  }
   &left,
   &right {
     @extend .episodesContainer;
@@ -12,14 +73,26 @@
   &left {
     border-radius: 0 0.5rem 0.5rem 0;
     margin-left: -0.3rem;
-    margin-right: 1.2rem;
   }
   &right {
     border-radius: 0.5rem 0 0 0.5rem;
     margin-right: -0.3rem;
-    margin-left: 1.2rem;
+  }
+  @media (max-width: 450px) {
+    &left,
+    &right {
+      margin: 0;
+    }
   }
   &mix {
+    @media (max-width: 1040px) {
+      min-width: 93%;
+      max-width: 93%;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      display: flex;
+    }
     background-color: #212121;
     border-radius: 0.5rem;
     @extend .episodesContainer;
@@ -30,15 +103,65 @@
       > * {
         color: rgba(255, 255, 255, 0.834);
       }
+      @media (max-width: 1040px) {
+        min-width: 80%;
+        max-width: 80%;
+      }
+    }
+    &::after {
+      bottom: 0.3rem;
+      background: rgb(33, 33, 33);
+      background: -moz-linear-gradient(
+        0deg,
+        rgba(33, 33, 33, 1) 0%,
+        rgba(33, 33, 33, 0) 100%
+      );
+      background: -webkit-linear-gradient(
+        0deg,
+        rgba(33, 33, 33, 1) 0%,
+        rgba(33, 33, 33, 0) 100%
+      );
+      background: linear-gradient(
+        0deg,
+        rgba(33, 33, 33, 1) 0%,
+        rgba(33, 33, 33, 0) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#212121",endColorstr="#212121",GradientType=1);
+    }
+    &::before {
+      top: 0.4rem;
+
+      background: rgb(33, 33, 33);
+      background: -moz-linear-gradient(
+        180deg,
+        rgba(33, 33, 33, 1) 0%,
+        rgba(33, 33, 33, 0) 100%
+      );
+      background: -webkit-linear-gradient(
+        180deg,
+        rgba(33, 33, 33, 1) 0%,
+        rgba(33, 33, 33, 0) 100%
+      );
+      background: linear-gradient(
+        180deg,
+        rgba(33, 33, 33, 1) 0%,
+        rgba(33, 33, 33, 0) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#212121",endColorstr="#212121",GradientType=1);
     }
   }
 }
 .episodesList {
+  @media (max-width: 1040px) {
+    min-width: 80%;
+    max-width: 80%;
+  }
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   width: 15vw;
   padding: 1rem 1rem 1rem 1.5rem;
+  padding-bottom: 0;
   overflow-y: auto;
   height: 80vh;
   > * {

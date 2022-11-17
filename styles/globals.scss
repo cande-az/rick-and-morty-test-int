@@ -6,36 +6,37 @@ h3,
 h4,
 h5,
 h6,
-section
-p {
+section p {
   margin: 0;
 }
 
 body {
   font-family: "Sono", sans-serif;
-  font-size:12px;
+  font-size: 12px;
   background-color: #ffffff30;
-  padding: .5rem 1.5rem;
+  @media (min-width: 1040px) {
+    padding: 0.5rem 1.5rem;
+  }
 }
 
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #ffffff82 #ffffff20;
-  }
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #ffffff82 #ffffff20;
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 6px;
-  }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 6px;
+}
 
-  *::-webkit-scrollbar-track {
-    background: #ffffff20;
-    border-radius: 10px;
-  }
+*::-webkit-scrollbar-track {
+  background: #ffffff20;
+  border-radius: 10px;
+}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: #ffffff82;
-    border-radius: 10px;
-  }
+*::-webkit-scrollbar-thumb {
+  background-color: #ffffff82;
+  border-radius: 10px;
+}

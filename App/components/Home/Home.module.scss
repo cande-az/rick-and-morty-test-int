@@ -1,17 +1,35 @@
 .charactersListSection {
   display: flex;
   justify-content: space-between;
+  @media (max-width: 1040px){
+    flex-direction: column;
+    gap:2rem;
+  }
+  @media (max-width: 450px){
+    flex-direction: column;
+    gap:0;
+  }
   .charactersSection {
     display: flex;
+    @media (max-width: 1040px){
+      width: 100%;
+    }
+    @media (max-width: 450px){
+      flex-direction: column;
+    }
     &Left,
     &Right {
       @extend .charactersSection;
     }
-    &Right{
-      flex-direction:row-reverse ;
+    &Right {
+      flex-direction: row-reverse;
+      @media (max-width: 450px){
+        flex-direction: column;
+      }
     }
   }
   .boxContainer {
+    position: relative;
     background-color: #251642;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -19,6 +37,12 @@
     padding-bottom: 0;
     z-index: 1;
     gap: 1.5rem;
+    @media (max-width: 1040px){
+      width: 50%;
+    }
+    @media (max-width: 450px){
+      width: 100%;
+    }
   }
   .cardsContainer {
     display: flex;
@@ -28,13 +52,71 @@
     padding: 1.3rem;
     height: 75vh;
     overflow-y: auto;
+    @media (max-width: 1040px){
+      width: 80%;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1rem;
+      height: 4rem;
+      width: 100%;
+      z-index: 50;
+      background: rgb(37, 22, 66);
+      background: -moz-linear-gradient(
+        180deg,
+        rgba(37, 22, 66, 1) 0%,
+        rgba(37, 22, 66, 0) 100%
+      );
+      background: -webkit-linear-gradient(
+        180deg,
+        rgba(37, 22, 66, 1) 0%,
+        rgba(37, 22, 66, 0) 100%
+      );
+      background: linear-gradient(
+        180deg,
+        rgba(37, 22, 66, 1) 0%,
+        rgba(37, 22, 66, 0) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#251642",endColorstr="#251642",GradientType=1);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 3rem;
+      height: 4rem;
+      width: 100%;
+      z-index: 50;
+      background: rgb(37, 22, 66);
+      background: -moz-linear-gradient(
+        0deg,
+        rgba(37, 22, 66, 1) 0%,
+        rgba(37, 22, 66, 0) 100%
+      );
+      background: -webkit-linear-gradient(
+        0deg,
+        rgba(37, 22, 66, 1) 0%,
+        rgba(37, 22, 66, 0) 100%
+      );
+      background: linear-gradient(
+        0deg,
+        rgba(37, 22, 66, 1) 0%,
+        rgba(37, 22, 66, 0) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#251642",endColorstr="#251642",GradientType=1);
+    }
   }
 }
 .episodesContainerSection {
   display: flex;
   gap: 10rem;
+  @media (max-width: 1040px){
+    width: 50%;
+  }
 }
 
-.sectionBoth{
+.sectionBoth {
   min-width: max-content;
 }
